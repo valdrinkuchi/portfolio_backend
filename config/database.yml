@@ -1,0 +1,32 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 5432
+  username: postgres
+  password:
+
+  pool: 5
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: portfolio
+  host: localhost
+  pool: 5
+  username: postgres
+  password:
+
+test:
+  <<: *default
+  database: portfolio_test
+
+#
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: portfolio
+  host: db
+  pool: 5
+  username: postgres
+  password:

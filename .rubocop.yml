@@ -1,0 +1,85 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-minitest
+
+AllCops:
+  TargetRubyVersion: 3.0
+  Exclude:
+    - bin/**/*
+    - db/schema.rb
+    - log/**/*
+    - node_modules/**/*
+    - public/**/*
+    - tmp/**/*
+    - vendor/**/*
+  EnabledByDefault: true
+
+### Rails
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/SaveBang:
+  Enabled: false
+
+Rails/FilePath:
+  EnforcedStyle: arguments
+
+### Bundler
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Bundler/GemVersion:
+  Enabled: false
+
+### Style
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
+Style/MissingElse:
+  Enabled: false
+
+Style/Copyright:
+  Enabled: false
+
+Style/InlineComment:
+  Enabled: false
+
+Style/StringHashKeys:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/IpAddresses:
+  Enabled: false
+
+### Metrics
+
+Metrics/BlockLength:
+  Max: 100
+
+# Lint
+
+Lint/ConstantResolution:
+  Enabled: false
+
+Lint/NumberConversion:
+  Enabled: false
+
+# Performance
+
+Performance/ChainArrayAllocation:
+  Enabled: false

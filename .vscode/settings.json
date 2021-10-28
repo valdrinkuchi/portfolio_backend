@@ -1,0 +1,26 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+
+  "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/tmp/**": true,
+    "**/public/packs": true,
+    "**/public/packs-test": true
+  },
+  "files.exclude": {
+    "**/docker-volumes": true
+  },
+
+  "ruby.lint": {
+    "rubocop": {
+      "forceExclusion": true
+    }
+  },
+
+  "[ruby]": {
+    "editor.defaultFormatter": "misogi.ruby-rubocop",
+    "editor.formatOnSave": true
+  }
+}
