@@ -1,7 +1,6 @@
 # README
 
 **Crypto Portfolio**
-http://rails.valdrinkuchi.com
 
 This is a simple API for
 registering transactions made on three types of cryptocurrencies:
