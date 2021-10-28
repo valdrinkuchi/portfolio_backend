@@ -21,23 +21,27 @@ and finally the transaction is removed from the table.
 -Ruby on Rails Framework
 
 **Schema**
-MyPortfolio
 
-amount
-location
-cryptocurreny(fk)
-date
+- PortfolioTransactions
 
-CryptoCurrency
-name
+  - amount
+  - location
+  - cryptocurreny(fk)
+  - date
+
+- CryptoCurrency
+
+  - name
+  - code
 
 **Frontend**
--Vue.js Framework
+
+- Vue.js Framework
 
 **Deployment**
-DigitalOcean Droplets Linux-based virtual machines
+DigitalOcean Droplets Linux-based virtual machine.
 Both backend and frontend are built into Docker containers and pushed to
-Gitlab repository. The docker-compose.yml file is copied to the designated
+a repository. The docker-compose.yml file is copied to the designated
 VM and is configured to run the PostgreSql database, Rails backend and Vue.js
 dist files. Backend and frontend images are pulled from Gitlab and Postgres 12
 is pulled from docker hub.
