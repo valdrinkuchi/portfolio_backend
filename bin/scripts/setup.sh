@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# set -e
+set -e
 env_var_ip_address=0.0.0.0
-bundle install
-# bin/rails db:migrate
+bin/rails db:migrate
 rails s -b ${env_var_ip_address}
