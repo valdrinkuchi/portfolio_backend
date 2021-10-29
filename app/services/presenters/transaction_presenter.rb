@@ -11,7 +11,7 @@ module Presenters
       when 'BTC'
         compute_transaction_for('BTC')
       when 'ETH'
-        compute_transaction_for('ETC')
+        compute_transaction_for('ETH')
       when 'XRP'
         compute_transaction_for('XRP')
       end
@@ -27,10 +27,10 @@ module Presenters
         amount: transaction.amount,
         location: transaction.location,
         currency: transaction.currency,
-        date: transaction.date,
+        date: transaction.date.strftime('%Y/%m/%d'),
         created_at: transaction.created_at,
         updated_at: transaction.updated_at,
-        market_value: transaction.amount * rate_data[crypto]
+        market_value: (transaction.amount * rate_data[crypto]).ceil(2)
       }
     end
   end
