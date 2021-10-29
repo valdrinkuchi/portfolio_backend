@@ -11,7 +11,7 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  run-lint-and-build-image:
+  run-lint-build-and-push-image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
