@@ -26,7 +26,7 @@ and finally the transaction is removed from the table.
 
   - amount
   - location
-  - cryptocurreny(fk)
+  - curreny(fk)
   - date
 
 - CryptoCurrency
