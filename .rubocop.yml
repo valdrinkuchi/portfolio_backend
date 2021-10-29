@@ -1,6 +1,7 @@
 require:
   - rubocop-performance
   - rubocop-rails
+  - rubocop-rake
   - rubocop-minitest
 
 AllCops:
@@ -18,6 +19,12 @@ AllCops:
 ### Rails
 
 Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false
+
+Rails/EnvironmentVariableAccess:
   Enabled: false
 
 Rails/SaveBang:
@@ -70,6 +77,12 @@ Style/IpAddresses:
 
 Metrics/BlockLength:
   Max: 100
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/AbcSize:
+  Max: 25
 
 # Lint
 

@@ -213,6 +213,8 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
     ruby-progressbar (1.11.0)
     solargraph (0.44.0)
       backport (~> 1.2)
@@ -277,6 +279,7 @@ DEPENDENCIES
   rubocop-minitest
   rubocop-performance (~> 1.11, >= 1.11.5)
   rubocop-rails (~> 2.12, >= 2.12.4)
+  rubocop-rake (~> 0.6.0)
   solargraph
   spring
   spring-watcher-listen (~> 2.0.0)

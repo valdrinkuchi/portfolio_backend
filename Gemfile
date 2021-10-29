@@ -44,6 +44,9 @@ group :development, :test do
   # Debug
   gem 'pry-byebug'
 
+  # Rubocop-Rake
+  gem 'rubocop-rake', '~> 0.6.0'
+
   # Rubocop
   gem 'rubocop-rails', '~> 2.12', '>= 2.12.4'
 
