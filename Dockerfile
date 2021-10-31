@@ -2,7 +2,6 @@ FROM ruby:3.0.0-alpine
 
 WORKDIR /opt
 
-
 RUN apk add --update \
 build-base \
 libxml2-dev \
