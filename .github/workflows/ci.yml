@@ -26,7 +26,10 @@ jobs:
         run: |
           bin/rubocop --parallel
 
+      - name: Build and push Docker image
       - uses: actions/checkout@v2
-      - name: Build the Docker image
-        run: |
-          docker build . --file Dockerfile --tag ghcr.io/valdrinkuchi/portfolio_backend/portfolio_backend:latest
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_USERNAME }}
+          repository: valdrinkuchi/portfolio_backend
+          tags: latest
