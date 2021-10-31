@@ -25,12 +25,12 @@ jobs:
       - name: Run linters
         run: |
           bin/rubocop --parallel
-
-      - name: Build and push Docker image
-      - uses: actions/checkout@v2
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_USERNAME }}
-          repository: valdrinkuchi/portfolio_backend
-          dockerfile: Dockerfile
-          tags: latest
+  build-and-deploy-back:
+    name: Build and push Docker image
+    uses: actions/checkout@v2
+    with:
+      username: ${{ secrets.DOCKER_USERNAME }}
+      password: ${{ secrets.DOCKER_USERNAME }}
+      repository: valdrinkuchi/portfolio_backend
+      dockerfile: Dockerfile
+      tags: latest
