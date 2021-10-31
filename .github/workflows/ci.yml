@@ -32,4 +32,5 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_USERNAME }}
           repository: valdrinkuchi/portfolio_backend
+          dockerfile: Dockerfile
           tags: latest
