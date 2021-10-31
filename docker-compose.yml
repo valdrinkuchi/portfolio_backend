@@ -1,47 +1,80 @@
 version: "3.3"
 
 services:
+  django_db:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: valdrin
+      POSTGRES_DB: django_orm
+    volumes:
+      - /root/pg_db:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  proxy:
+    depends_on:
+      - django_app
+      - rails_front
+    image: registry.gitlab.com/valdrinkuchi/tallinn-2/proxy
+    volumes:
+      - /etc/letsencrypt/live/valdrinkuchi.com:/ssl
+      - static_data:/vol/static
+    ports:
+      - 80:80
+      - 443:443
+      - 3000:3000
+    networks:
+      - app-network
+
+  django_app:
+    depends_on:
+      - django_db
+    environment:
+      DB_HOST: django_db
+    image: registry.gitlab.com/valdrinkuchi/tallinn-2
+    volumes:
+      - static_data:/vol/web
+    networks:
+      - app-network
+
   db:
     image: postgres:12
     environment:
       POSTGRES_PASSWORD: 123456
       POSTGRES_USER: postgres
       POSTGRES_DB: portfolio
-    # volumes:
-    #   - $PWD/rails/pg_db:/var/lib/postgresql/data
-    ports:
-      - "5433:5432"
-    # networks:
-    #   - app-network
+    volumes:
+      - $PWD/rails/pg_db:/var/lib/postgresql/data
+    networks:
+      - app-network
 
   redis:
     image: redis:alpine
     environment:
       REDIS_URL: "redis://localhost:6379/0/cache"
-    # volumes:
-    #   - $PWD/redis-data:/var/lib/redis
-    ports:
-      - "6380:6379"
+    volumes:
+      - $PWD/redis-data:/var/lib/redis
     networks:
       - app-network
 
   rails_back:
+    image: valdrinkuchi/portfolio_backend:latest
+    volumes:
+      - ./config:/opt/config
     depends_on:
       - db
       - redis
-    image: portfolio
-    ports:
-      - "3001:3000"
     networks:
       - app-network
 
   rails_front:
-    image: registry.gitlab.com/valdrinkuchi/portfolio_vue
+    image: valdrinkuchi/portfolio_frontend:latest
     networks:
       - app-network
 networks:
   app-network:
     driver: bridge
-# volumes:
-#   static_data:
-#   media_data:
+volumes:
+  static_data:
+  media_data:
