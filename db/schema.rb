@@ -32,16 +32,5 @@ ActiveRecord::Schema.define(version: 2021_10_28_123757) do
     t.index ["currency_id"], name: "index_portfolio_transactions_on_currency_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
-    t.float "amount"
-    t.string "location"
-    t.datetime "date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "currency_id", null: false
-    t.index ["currency_id"], name: "index_transactions_on_currency_id"
-  end
-
   add_foreign_key "portfolio_transactions", "currencies"
-  add_foreign_key "transactions", "currencies"
 end

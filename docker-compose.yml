@@ -1,0 +1,47 @@
+version: "3.3"
+
+services:
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: postgres
+      POSTGRES_DB: portfolio
+    # volumes:
+    #   - $PWD/rails/pg_db:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    # networks:
+    #   - app-network
+
+  redis:
+    image: redis:alpine
+    environment:
+      REDIS_URL: "redis://localhost:6379/0/cache"
+    # volumes:
+    #   - $PWD/redis-data:/var/lib/redis
+    ports:
+      - "6380:6379"
+    networks:
+      - app-network
+
+  rails_back:
+    depends_on:
+      - db
+      - redis
+    image: portfolio
+    ports:
+      - "3001:3000"
+    networks:
+      - app-network
+
+  rails_front:
+    image: registry.gitlab.com/valdrinkuchi/portfolio_vue
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
+# volumes:
+#   static_data:
+#   media_data:

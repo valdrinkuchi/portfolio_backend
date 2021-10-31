@@ -18,7 +18,6 @@ COPY . .
 RUN gem install bundler:2.2.19
 RUN bundle install
 ENV PATH="bin/scripts:${PATH}"
-ENV env_var_ip_address=0.0.0.0
 ENV RAILS_ENV=production
 
 RUN chmod +x ./bin/scripts/*

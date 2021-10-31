@@ -27,6 +27,7 @@ production:
   encoding: unicode
   database: portfolio
   host: db
+  posrt: 5433
   pool: 5
   username: postgres
-  password:
+  password: 123456
