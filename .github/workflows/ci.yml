@@ -60,6 +60,6 @@ jobs:
         with:
           host: ${{ secrets.HOST_DEVOPS }}
           USERNAME: ${{ secrets.USERNAME_DEVOPS }}
-          KEY: ${{ secrets.SSH_DEVOPS }}
+          KEY: ${{ secrets.SSH_DEVOPS_PRIVATE }}
           run: |
             ./deploy.sh
