@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  run-lint-build-and-push-image:
+  run-lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -21,6 +21,7 @@ jobs:
         run: |
           bin/rubocop --parallel
   build-push-backend:
+    needs: run-lint
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
