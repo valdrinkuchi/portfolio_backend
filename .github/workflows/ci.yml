@@ -61,5 +61,5 @@ jobs:
           host: ${{ secrets.HOST_DEVOPS }}
           USERNAME: ${{ secrets.USERNAME_DEVOPS }}
           KEY: ${{ secrets.SSH_DEVOPS }}
-          script: |
+          run: |
             ./deploy.sh
