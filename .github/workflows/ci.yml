@@ -54,12 +54,11 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
-      - uses: actions/checkout@v2
       - name: Executing remote  command
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DEVOPS }}
           USERNAME: ${{ secrets.USERNAME_DEVOPS }}
-          PORT: ${{ secrets.PORT_DEVOPS }}
+          KEY: ${{ secrets.SSH_DEVOPS }}
           script: |
             ./deploy.sh
