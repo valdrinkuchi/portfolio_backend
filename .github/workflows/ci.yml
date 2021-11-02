@@ -59,14 +59,12 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           MASTER_KEY: ${{ secrets.MASTER_KEY }}
-          RAILS_CREDENTIALS: ${{ secrets.RAILS_CREDENTIALS }}
         with:
           host: ${{ secrets.HOST_DEVOPS }}
           USERNAME: ${{ secrets.USERNAME_DEVOPS }}
           KEY: ${{ secrets.SSH_DEVOPS_PRIVATE }}
-          envs: MASTER_KEY,RAILS_CREDENTIALS
+          envs: MASTER_KEY
           script: |
             docker-compose stop && docker rmi -f $(docker images -a -q)
             echo $MASTER_KEY > master.key
-            echo $RAILS_CREDENTIALS > credentials.yml.enc
             docker-compose up -d

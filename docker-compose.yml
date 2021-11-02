@@ -62,6 +62,7 @@ services:
     image: valdrinkuchi/portfolio_backend:latest
     volumes:
       - $PWD/master.key:/config/master.key
+      - $PWD/credentials.yml.enc:/config/credentials.yml.enc
     depends_on:
       - db
       - redis
