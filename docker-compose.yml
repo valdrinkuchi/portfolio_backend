@@ -18,7 +18,7 @@ services:
       - rails_front
     image: registry.gitlab.com/valdrinkuchi/tallinn-2/proxy
     volumes:
-      - /etc/letsencrypt/live/valdrinkuchi.com-001:/ssl
+      - /etc/letsencrypt/live/valdrinkuchi.com-0001:/ssl
       - static_data:/vol/static
     ports:
       - 80:80
@@ -60,8 +60,8 @@ services:
 
   rails_back:
     image: valdrinkuchi/portfolio_backend:latest
-    # volumes:
-    #   - ./config:/opt/config
+    volumes:
+      - $PWD/config:/opt/config
     depends_on:
       - db
       - redis
