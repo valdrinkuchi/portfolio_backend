@@ -15,7 +15,8 @@ gem 'puma', '~> 5.0'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 
-gem "nokogiri", ">= 1.12.5"
+# Nokogiri
+gem 'nokogiri', '>= 1.12.5'
 
 # Tame Rails' multi-line logging into a single line per request (https://github.com/roidrage/lograge)
 gem 'lograge'
