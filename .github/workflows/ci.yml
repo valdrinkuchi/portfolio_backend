@@ -65,6 +65,6 @@ jobs:
           KEY: ${{ secrets.SSH_DEVOPS_PRIVATE }}
           envs: MASTER_KEY
           script: |
-            docker-compose stop && docker rmi -f $(docker images -a -q)
+            docker-compose stop && docker rmi valdrinkuchi/portfolio_frontend
             echo $MASTER_KEY > master.key
             docker-compose up -d
