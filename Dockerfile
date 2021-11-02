@@ -1,6 +1,6 @@
 FROM ruby:3.0.0-alpine
 
-WORKDIR /opt
+# WORKDIR /opt
 
 RUN apk add --update \
 build-base \
@@ -13,7 +13,7 @@ RUN ls /usr/share/zoneinfo
 RUN cp /usr/share/zoneinfo/Europe/Tallinn /etc/localtime
 RUN echo "Europe/Tallinn" > /etc/timezone
 
-COPY . /opt
+COPY . .
 RUN gem install bundler:2.2.19
 RUN bundle install
 ENV PATH="bin/scripts:${PATH}"
