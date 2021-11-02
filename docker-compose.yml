@@ -61,7 +61,7 @@ services:
   rails_back:
     image: valdrinkuchi/portfolio_backend:latest
     volumes:
-      - $PWD/config:/opt/config
+      - $PWD/master.key:/config/master.key
     depends_on:
       - db
       - redis

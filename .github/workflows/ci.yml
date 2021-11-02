@@ -55,11 +55,14 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v2
-      - name: Executing remote  command
+      - name: Executing remote command
         uses: appleboy/ssh-action@master
+        env:
+          MASTER_KEY: ${{ secrets.MASTER_KEY }}
         with:
           host: ${{ secrets.HOST_DEVOPS }}
           USERNAME: ${{ secrets.USERNAME_DEVOPS }}
           KEY: ${{ secrets.SSH_DEVOPS_PRIVATE }}
+          envs: MASTER_KEY
           script: |
             ./deploy.sh
