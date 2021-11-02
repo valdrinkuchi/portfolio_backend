@@ -66,4 +66,7 @@ jobs:
           KEY: ${{ secrets.SSH_DEVOPS_PRIVATE }}
           envs: MASTER_KEY,RAILS_CREDENTIALS
           script: |
-            ./deploy.sh
+            docker-compose stop && docker rmi -f $(docker images -a -q)
+            echo $MASTER_KEY > master.key
+            echo $RAILS_CREDENTIALS > credentials.yml.enc
+            docker-compose up -d
