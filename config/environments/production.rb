@@ -41,7 +41,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :warn
+  config.log_level = :info
 
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]
@@ -79,6 +79,13 @@ Rails.application.configure do
     logger           = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.log_tags = [:remote_ip]
+
+    # Use lograge gem
+    config.lograge.enabled = true
+    config.lograge.custom_payload do |controller|
+      { user_agent: controller.request.user_agent }
+    end
   end
 
   # Do not dump schema after migrations.
