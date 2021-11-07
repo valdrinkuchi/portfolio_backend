@@ -87,7 +87,7 @@ Rails.application.configure do
       { user_agent: controller.request.user_agent }
     end
   end
-
+  Rails.application.config.hosts << '.valdrinkuchi.com'
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
