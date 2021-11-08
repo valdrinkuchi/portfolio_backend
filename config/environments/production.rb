@@ -11,6 +11,12 @@ Rails.application.configure do
     '.rails_back',
     'rails_back:300'
   ]
+  Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins '*'
+      resource '*', headers: :any, methods: %i[get post delete patch put options]
+    end
+  end
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -122,10 +128,4 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  Rails.application.config.middleware.insert_before 0, Rack::Cors do
-    allow do
-      origins '*'
-      resource '*', headers: :any, methods: %i[get post delete patch put options]
-    end
-  end
 end
