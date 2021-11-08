@@ -5,8 +5,8 @@ services:
     image: postgres:12-alpine
     environment:
       POSTGRES_PASSWORD: 123456
-      POSTGRES_USER: valdrin
-      POSTGRES_DB: django_orm
+      POSTGRES_USER: postgres
+      POSTGRES_DB: order_app
     volumes:
       - /root/pg_db:/var/lib/postgresql/data
     networks:
@@ -16,9 +16,9 @@ services:
     depends_on:
       - django_app
       - rails_front
-    image: registry.gitlab.com/valdrinkuchi/tallinn-2/proxy
+    image: valdrinkuchi/proxy
     volumes:
-      - /etc/letsencrypt/live/valdrinkuchi.com-0001:/ssl
+      - /etc/letsencrypt/archive/valdrinkuchi.com-0001:/ssl
       - static_data:/vol/static
     ports:
       - 80:80
@@ -32,7 +32,7 @@ services:
       - django_db
     environment:
       DB_HOST: django_db
-    image: registry.gitlab.com/valdrinkuchi/tallinn-2
+    image: valdrinkuchi/order_app:latest
     volumes:
       - static_data:/vol/web
     networks:
@@ -45,30 +45,27 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: portfolio
     volumes:
-      - $PWD/rails/pg_db:/var/lib/postgresql/data
+      - /rails/pg_db:/var/lib/postgresql/data
     networks:
       - app-network
 
   redis:
     image: redis:alpine
-    environment:
-      REDIS_URL: "redis://localhost:6379/0/cache"
     volumes:
-      - $PWD/redis-data:/var/lib/redis
+      - /redis-data:/var/lib/redis
     networks:
       - app-network
 
   rails_back:
     image: valdrinkuchi/portfolio_backend:latest
     volumes:
-      - $PWD/master.key:/config/master.key
-      - $PWD/credentials.yml.enc:/config/credentials.yml.enc
+      - ./master.key:/config/master.key
+      - ./application.yml:/config/application.yml
     depends_on:
       - db
       - redis
     networks:
       - app-network
-
   rails_front:
     image: valdrinkuchi/portfolio_frontend:latest
     networks:
