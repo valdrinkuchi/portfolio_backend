@@ -1,6 +1,17 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # allowlist hosts
+  config.hosts << [
+    'http://valdrinkuchi.com',
+    'http://valdrinkuchi.com:3000',
+    'http://rails.valdrinkuchi.com',
+    '.valdrinkuchi.com',
+    'rails_back',
+    '.rails_back',
+    'rails_back:300'
+  ]
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -37,7 +48,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  # config.force_ssl = false
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -87,7 +98,7 @@ Rails.application.configure do
       { user_agent: controller.request.user_agent }
     end
   end
-  Rails.application.config.hosts << '.valdrinkuchi.com'
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
@@ -111,4 +122,10 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins '*'
+      resource '*', headers: :any, methods: %i[get post delete patch put options]
+    end
+  end
 end

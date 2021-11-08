@@ -18,6 +18,9 @@ AllCops:
 
 ### Rails
 
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
 Rails/SkipsModelValidations:
   Enabled: false
 

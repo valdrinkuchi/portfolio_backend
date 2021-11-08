@@ -9,9 +9,10 @@ libxslt-dev \
 postgresql-dev \
 && rm -rf /var/cache/apk/*
 RUN apk add --no-cache tzdata
-RUN ls /usr/share/zoneinfo
-RUN cp /usr/share/zoneinfo/Europe/Tallinn /etc/localtime
-RUN echo "Europe/Tallinn" > /etc/timezone
+RUN apk add nano
+RUN apk --update add bash && \
+    apk add dos2unix
+
 
 COPY . .
 RUN gem install bundler:2.2.19
