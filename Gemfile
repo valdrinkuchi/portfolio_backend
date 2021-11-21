@@ -18,6 +18,9 @@ gem 'redis', '~> 4.0'
 # Nokogiri
 gem 'nokogiri', '>= 1.12.5'
 
+# env variable management
+gem 'figaro', '~> 1.2'
+
 # Tame Rails' multi-line logging into a single line per request (https://github.com/roidrage/lograge)
 gem 'lograge'
 
@@ -46,10 +49,10 @@ gem 'rack-cors'
 # RestClient
 gem 'rest-client', '~> 2.1'
 
-group :development, :test do
-  # Debug
-  gem 'pry-byebug'
+# Debug
+gem 'pry-byebug'
 
+group :development, :test do
   # Rubocop-Rake
   gem 'rubocop-rake', '~> 0.6.0'
 

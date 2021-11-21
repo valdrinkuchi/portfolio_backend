@@ -2,16 +2,16 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # allowlist hosts
-  config.hosts << [
-    'http://localhost:8080',
-    'http://valdrinkuchi.com',
-    'http://valdrinkuchi.com:3000',
-    'http://rails.valdrinkuchi.com',
-    '.valdrinkuchi.com',
-    'rails_back',
-    '.rails_back',
-    'rails_back:3000'
-  ]
+  # config.hosts << [
+  #   'http://localhost:8080',
+  #   'http://valdrinkuchi.com',
+  #   'http://valdrinkuchi.com:3000',
+  #   'http://rails.valdrinkuchi.com',
+  #   '.valdrinkuchi.com',
+  #   'rails_back',
+  #   '.rails_back',
+  #   'rails_back:3000'
+  # ]
   # Rails.application.config.middleware.insert_before 0, Rack::Cors do
   #   allow do
   #     origins '*'
