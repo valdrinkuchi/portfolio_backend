@@ -1,23 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # allowlist hosts
-  config.hosts << [
-    'http://valdrinkuchi.com',
-    'http://valdrinkuchi.com:3000',
-    'http://rails.valdrinkuchi.com',
-    '.valdrinkuchi.com',
-    'rails_back',
-    '.rails_back',
-    'rails_back:300'
-  ]
-  Rails.application.config.middleware.insert_before 0, Rack::Cors do
-    allow do
-      origins '*'
-      resource '*', headers: :any, methods: %i[get post delete patch put options]
-    end
-  end
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -85,12 +68,15 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
+  # Tell Active Support which deprecation messages to disallow.
+  config.active_support.disallowed_deprecation_warnings = []
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new('app-name'))
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new($stdout)

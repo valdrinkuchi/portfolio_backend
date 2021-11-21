@@ -1,4 +1,14 @@
 Rails.application.configure do
+  # config.hosts << [
+  #   'http://localhost:8080',
+  #   'http://valdrinkuchi.com',
+  #   'http://valdrinkuchi.com:3000',
+  #   'http://rails.valdrinkuchi.com',
+  #   '.valdrinkuchi.com',
+  #   'rails_back',
+  #   '.rails_back',
+  #   'rails_back:300'
+  # ]
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
