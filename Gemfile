@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/] (https://github.com/ged/ruby-pg)
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 
@@ -17,6 +17,9 @@ gem 'redis', '~> 4.0'
 
 # Nokogiri
 gem 'nokogiri', '>= 1.12.5'
+
+# env variable management
+gem 'figaro', '~> 1.2'
 
 # Tame Rails' multi-line logging into a single line per request (https://github.com/roidrage/lograge)
 gem 'lograge'
@@ -46,10 +49,10 @@ gem 'rack-cors'
 # RestClient
 gem 'rest-client', '~> 2.1'
 
-group :development, :test do
-  # Debug
-  gem 'pry-byebug'
+# Debug
+gem 'pry-byebug'
 
+group :development, :test do
   # Rubocop-Rake
   gem 'rubocop-rake', '~> 0.6.0'
 
